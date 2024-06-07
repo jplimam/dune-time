@@ -1,6 +1,6 @@
 const relogio = document.querySelector('.relogio');
 let timer;
-let i;
+let startTime;
 
 function mostraHoras(segundos) {
     const horas = new Date(segundos * 1000);
@@ -13,9 +13,10 @@ function mostraHoras(segundos) {
 function iniciaRelogio() {
     startTime = parseInt(localStorage.getItem('cronometro')) || 0;
     timer = setInterval(function () {
-        i++;
-        localStorage.setItem('cronometro', i);
-        relogio.innerHTML = mostraHoras(i);
+        startTime++;
+        localStorage.setItem('cronometro', startTime);
+        relogio.innerHTML = mostraHoras(startTime);
+
     }, 1000);
 }
 
@@ -27,8 +28,8 @@ function pararRelogio() {
 document.addEventListener('DOMContentLoaded', function () {
     const tempoSalvo = parseInt(localStorage.getItem('cronometro'));
     if (tempoSalvo) {
-        i = tempoSalvo;
-        relogio.innerHTML = mostraHoras(i);
+        startTime = tempoSalvo;
+        relogio.innerHTML = mostraHoras(startTime);
     }
     iniciaRelogio();
 })
