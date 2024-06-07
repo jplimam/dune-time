@@ -6,7 +6,7 @@ function mostraHoras(segundos) {
     const horas = new Date(segundos * 1000);
     return horas.toLocaleTimeString('pt-br', {
         hour12: false,
-        timeZone: 'UTC'
+        timeZone: 'GMT'
     })
 }
 
